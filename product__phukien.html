@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR Khả Ái Store - Phụ Kiện</title>
+    <link rel="stylesheet" href="assets/css/product.css">
+    <style>
+        body {
+            background-image: url('assets/img/background2.png');
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="use-space">
+            <div class="header-item">
+                <a href="/index.html">
+                    <img class="web-logo" src="assets/img/weblogo1.png" alt="Logo">
+                </a>
+
+                <ul class="nav">
+                    <li class="navitem">
+                        <a href="index.html" >HOME</a>
+                    </li>
+
+                    <li class="navitem">
+                        <a href="#">SẢN PHẨM</a>
+                        <ul class="subnav">
+                            <li class="subnav-item"><a href="">Áo</a></li>
+                            <li class="subnav-item"><a href="">Quần</a></li>
+                            <li class="subnav-item"><a href="">Giày Dép</a></li>
+                            <li class="subnav-item"><a href="">Phụ Kiện</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="navitem">
+                        <a href="index.html">THÔNG TIN</a>
+                    </li>
+                </ul>
+
+                <div>
+                    <img id="menu_btn1" class="menu_btn" src="assets/img/menu-4-xxl.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product__main">
+
+    </div>
+
+    <script>
+        var header = document.getElementById('header');
+        var Menubtn = document.getElementById('menu_btn1');
+        var headerHeight = header.clientHeight;
+        
+        Menubtn.onclick = function(){
+            var isClosed = header.clientHeight === headerHeight;
+            if (isClosed) {
+                header.style.height = 'auto';
+            }
+            else {
+                header.style.height = null;
+            }
+        }
+
+        var menuItems = document.querySelectorAll('.nav .navitem > a[href*="#"]');
+        for (var i = 0; i < menuItems.length; i++){
+            var menuItem = menuItems[i];
+            
+            menuItem.onclick = function(event){
+                var isParentMenu = this.nextElementSibling && menuItem.nextElementSibling.classList.contains('subnav'); 
+                if (isParentMenu) {
+                    event.preventDefault();
+                }
+                else {
+                    header.style.height = null;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
